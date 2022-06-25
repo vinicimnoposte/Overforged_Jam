@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Handle
   - Area
+  - minigame4
   layers:
   - Default
   - TransparentFX

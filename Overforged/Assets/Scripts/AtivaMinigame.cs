@@ -9,8 +9,12 @@ public class AtivaMinigame : MonoBehaviour
     public int Nopuzzle = 0;
     public GameObject player;
     public bool start;
+    public GameObject minigame;
     #endregion
-
+    private void Start()
+    {
+        
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.tag == "Player") //&& Input.GetKeyDown("e"))
@@ -37,6 +41,8 @@ public class AtivaMinigame : MonoBehaviour
         if(Input.GetKeyDown("e") && start)
         {
             player.GetComponent<CharacterBhvr>().SetStarter(Thispuzzle);
+
+            minigame.GetComponent<MultipleSkillcheck>().startouMinigame = true;
         }
     }
 }
