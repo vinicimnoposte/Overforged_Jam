@@ -7,6 +7,8 @@ public class CharacterBhvr : MonoBehaviour
     public GameObject puzzleArrow;
     public GameObject puzzleCheck;
     public GameObject puzzleMultiple;
+    public int PuzzleActive = 0;
+    public bool minigamefinished;
 
     private void Start()
     {
@@ -20,21 +22,30 @@ public class CharacterBhvr : MonoBehaviour
         var movementH = Input.GetAxis("Horizontal");
         var movementV = Input.GetAxis("Vertical");
         transform.position += new Vector3(movementH, movementV, 0) * Time.deltaTime * MovementSpeed;
-        if(Input.GetKeyDown("e"))
+        if(PuzzleActive == 1 && !minigamefinished)
         {
-            puzzleSpace.SetActive(true);
+                puzzleSpace.SetActive(true);
         }
-        if(Input.GetKeyDown("q"))
+        if(PuzzleActive == 2 && !minigamefinished)
         {
             puzzleArrow.SetActive(true);
         }
-        if(Input.GetKeyDown("r"))
+        if(PuzzleActive == 3 && !minigamefinished)
         {
             puzzleCheck.SetActive(true);
         }
-        if(Input.GetKeyDown("t"))
+        if(PuzzleActive == 4 && !minigamefinished)
         {
             puzzleMultiple.SetActive(true);
         }
+    }
+
+    public void SetStarter(int puzzleStarter)
+    {
+        PuzzleActive = puzzleStarter;
+    }
+    public void resetPuzzle()
+    {
+        minigamefinished = false;
     }
 }

@@ -13,6 +13,7 @@ public class BarSkillCheck : MonoBehaviour
     public float MinHorizontalPosition = 0;
     public bool vai = true;
     public bool space = false;
+    public GameObject player;
     #endregion
 
     // Start is called before the first frame update
@@ -26,6 +27,7 @@ public class BarSkillCheck : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         Vector2 position = rectTransform.anchoredPosition;
         if(position.x >= 0f && position.x < 150f && vai == true)
         {
@@ -44,18 +46,32 @@ public class BarSkillCheck : MonoBehaviour
         }
         if (Input.GetKeyDown("space") && space)
         {
-            HorizontalSpeed = 0;
+            //HorizontalSpeed = 0;
             print("sucesso");
             puzzleCheck.SetActive(false);
+            player.GetComponent<CharacterBhvr>().minigamefinished = true;
         }
         if (Input.GetKeyDown("space") && !space)
         {
             print("falha");
-            HorizontalSpeed = 0;
+            //HorizontalSpeed = 0;
+            position.x = 0f;
         }
-        rectTransform.anchoredPosition = position;        
+        rectTransform.anchoredPosition = position;
+
+        if (puzzleCheck.activeInHierarchy)
+        {
+            player.GetComponent<CharacterBhvr>().enabled = false;
+        }
+        else
+        {
+            player.GetComponent<CharacterBhvr>().enabled = true;
+        }
+   
     }
-    public void OnTriggerStay2D(Collider2D collision)
+    
+    
+    public void OnTriggerEnter2D(Collider2D collision)
     {
         space = true;
     }

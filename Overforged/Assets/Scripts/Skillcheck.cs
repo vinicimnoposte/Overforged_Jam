@@ -38,6 +38,8 @@ public class Skillcheck : MonoBehaviour
             coolingDownS = false;
             
             shrekpai.SetActive(false);
+            player.GetComponent<CharacterBhvr>().minigamefinished = true;
+            shrek.fillAmount = 0f;
         }
         
         
@@ -64,6 +66,8 @@ public class Skillcheck : MonoBehaviour
             coolingDownF = false;
             
             fionapai.SetActive(false);
+            player.GetComponent<CharacterBhvr>().minigamefinished = true;
+            fiona.fillAmount = 0f;
         }
         if(shrekpai.activeInHierarchy || fionapai.activeInHierarchy)
         {

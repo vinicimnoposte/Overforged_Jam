@@ -11,6 +11,8 @@ public class MultipleSkillcheck : MonoBehaviour
     public Slider quickTimeSlider;
     public float decreaseSpeed;
     public bool freezeTimer = false;
+    public GameObject player;
+    public GameObject KeytoPressPai;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,12 +34,20 @@ public class MultipleSkillcheck : MonoBehaviour
             keyToPress.text = availableOptions[rand].ToString();
             if(Input.GetKeyDown(key) && quickTimeSlider.value > 0)
             {               
-                 freezeTimer = true;
+                 //freezeTimer = true;
                  quickTimeSlider.value += 1;
-                 keyToPress.text = "Parabens";
-                print("parabens");
-                 gameObject.SetActive(false); 
+                 //keyToPress.text = "Parabens";
+                 print("parabens");
+                 gameObject.SetActive(false);
+                player.GetComponent<CharacterBhvr>().minigamefinished = true;
+
             }
         }
+        if(KeytoPressPai.activeInHierarchy)
+        {
+            player.GetComponent<CharacterBhvr>().enabled = false;
+        }
+        else
+            player.GetComponent<CharacterBhvr>().enabled = true;
     }
 }
