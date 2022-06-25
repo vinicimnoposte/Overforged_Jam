@@ -36,7 +36,7 @@ public class Skillcheck : MonoBehaviour
         if(shrek.fillAmount == 1)
         {
             coolingDownS = false;
-            print("Shrek sucesso");
+            
             shrekpai.SetActive(false);
         }
         
@@ -62,7 +62,7 @@ public class Skillcheck : MonoBehaviour
         if(fiona.fillAmount >= 0.95f)
         {
             coolingDownF = false;
-            print("Fiona sucesso");
+            
             fionapai.SetActive(false);
         }
         if(shrekpai.activeInHierarchy || fionapai.activeInHierarchy)
